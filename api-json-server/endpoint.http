@@ -1,0 +1,172 @@
+@baseUrl = http://localhost:3000
+
+GET   {{baseUrl}}/users/10
+###
+GET   {{baseUrl}}/users?email=admin@example.com
+###
+POST  {{baseUrl}}/users
+Content-Type: application/json
+Accept: application/json
+
+ {
+      "id": 10,
+      "email": "admin@example.com",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "telephone": "771001010",
+      "role": "Admin",
+      "isActive": true,
+      "token": "admin_token_123",
+      "refreshToken": "admin_refresh_token_123",
+      "expiresIn": 3600
+    }
+
+###
+PUT  {{baseUrl}}/users/10
+Content-Type: application/json
+Accept: application/json
+
+{
+ 
+      "email": "admin1@example.com",
+      "nom": "Dupont1",
+      "prenom": "Jean1",
+      "telephone": "771001011",
+      "role": "Admin1",
+      "isActive": false,
+      "token": "admin_token_1234",
+      "refreshToken": "admin_refresh_token_1234",
+      "expiresIn": 3600
+}
+
+
+####
+PATCH   {{baseUrl}}/users/10
+
+Content-Type: application/json
+Accept: application/json
+
+{
+      "isActive": true
+    
+}
+
+###
+### Tri sur une colonne (croissant)
+GET   {{baseUrl}}/users?_sort=nom&_order=asc
+
+###
+### Tri sur une colonne (décroissant)
+GET   {{baseUrl}}/users?_sort=nom&_order=desc
+
+###
+### Tri sur plusieurs colonnes
+GET   {{baseUrl}}/users?_sort=role,nom&_order=asc,asc
+
+###
+### Filtre et tri sur plusieurs colonnes
+GET   {{baseUrl}}/users?role=Admin&isActive=true&_sort=nom,prenom&_order=asc,asc
+
+###
+### Filtre sur plusieurs colonnes avec pagination
+GET   {{baseUrl}}/users?role=Admin&isActive=true&_page=1&_limit=10
+
+###
+### Filtre sur plusieurs colonnes avec tri et pagination
+GET   {{baseUrl}}/users?email=admin@example.com&isActive=true&_sort=nom&_order=desc&_page=1&_limit=5
+
+### ==========================================
+### PATIENTS ENDPOINTS
+### ==========================================
+
+### Lire tous les patients
+GET {{baseUrl}}/patients
+
+###
+### Lire un patient par son ID
+GET {{baseUrl}}/patients/3
+
+###
+### Ajouter un patient
+POST {{baseUrl}}/patients
+Content-Type: application/json
+Accept: application/json
+
+{
+  "numero": "PAT-004",
+  "nom": "Lefebvre",
+  "prenom": "Sophie",
+  "telephone": "+33645678901",
+  "adresse": "10 Rue de la Paix, Paris",
+  "antecedents": "Asthme",
+  "createdAt": "2023-01-02T00:00:00.000Z"
+}
+
+###
+### Modifier un patient (PUT)
+PUT {{baseUrl}}/patients/3
+Content-Type: application/json
+Accept: application/json
+
+{
+  "numero": "PAT-003",
+  "nom": "Durand",
+  "prenom": "Pierre",
+  "telephone": "+33634567890",
+  "adresse": "Nouvelle adresse",
+  "antecedents": "Aucun",
+  "createdAt": "2023-01-01T00:00:00.000Z"
+}
+
+###
+### Supprimer un patient
+DELETE {{baseUrl}}/patients/3
+
+
+### ==========================================
+### DEMANDES ENDPOINTS
+### ==========================================
+
+### Lire toutes les demandes
+GET {{baseUrl}}/demandes
+
+###
+### Lire une demande par son ID
+GET {{baseUrl}}/demandes/DEM-001
+
+###
+### Filtrer les demandes par statut (ex: en_attente)
+GET {{baseUrl}}/demandes?statut=en_attente
+
+###
+### Ajouter une demande
+POST {{baseUrl}}/demandes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "DEM-013",
+  "patientNom": "Gomez",
+  "patientPrenom": "Maria",
+  "specialite": "Generaliste",
+  "dateDemandee": "2026-03-10",
+  "heure": "10:00",
+  "statut": "en_attente",
+  "motif": "Consultation de suivi",
+  "dateCreation": "2026-01-29",
+  "derniereModification": "2026-01-29"
+}
+
+###
+### Modifier partiellement une demande (PATCH)
+PATCH {{baseUrl}}/demandes/DEM-001
+Content-Type: application/json
+Accept: application/json
+
+{
+  "statut": "accepte"
+}
+
+###
+### Supprimer une demande
+DELETE {{baseUrl}}/demandes/DEM-012

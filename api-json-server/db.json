@@ -1,0 +1,222 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@example.com",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "telephone": "+33612345678",
+      "role": "Admin",
+      "isActive": true,
+      "token": "admin_token_123",
+      "refreshToken": "admin_refresh_token_123",
+      "expiresIn": 3600
+    },
+    {
+      "id": 2,
+      "email": "doctor@example.com",
+      "nom": "Martin",
+      "prenom": "Marie",
+      "telephone": "+33623456789",
+      "role": "Medecin",
+      "isActive": true,
+      "token": "doctor_token_456",
+      "refreshToken": "doctor_refresh_token_456",
+      "expiresIn": 3600
+    },
+    {
+      "id": 3,
+      "email": "patient@example.com",
+      "nom": "Durand",
+      "prenom": "Pierre",
+      "telephone": "+33634567890",
+      "role": "Patient",
+      "isActive": true,
+      "token": "patient_token_789",
+      "refreshToken": "patient_refresh_token_789",
+      "expiresIn": 3600
+    },
+    {
+      "id": "DEM-010",
+      "patientNom": "Dupont",
+      "patientPrenom": "Luc",
+      "specialite": "Cardiologue",
+      "dateDemandee": "2026-02-25",
+      "heure": "15:00",
+      "statut": "accepte",
+      "motif": "Suivi post-opératoire",
+      "dateCreation": "2026-01-22",
+      "derniereModification": "2026-01-27"
+    },
+    {
+      "email": "admin1@example.com",
+      "nom": "Dupont1",
+      "prenom": "Jean1",
+      "telephone": "771001011",
+      "role": "Admin1",
+      "isActive": false,
+      "token": "admin_token_1234",
+      "refreshToken": "admin_refresh_token_1234",
+      "expiresIn": 3600,
+      "id": 10
+    }
+  ],
+  "patients": [
+    {
+      "id": 3,
+      "numero": "PAT-003",
+      "nom": "Durand",
+      "prenom": "Pierre",
+      "telephone": "+33634567890",
+      "adresse": "Non renseignée",
+      "antecedents": "",
+      "createdAt": "2023-01-01T00:00:00.000Z"
+    }
+  ],
+  "demandes": [
+    {
+      "id": "DEM-001",
+      "patientNom": "Dupont",
+      "patientPrenom": "Jean",
+      "specialite": "Generaliste",
+      "dateDemandee": "2026-02-15",
+      "heure": "09:00",
+      "statut": "en_attente",
+      "motif": "Consultation générale",
+      "dateCreation": "2026-01-28",
+      "derniereModification": "2026-01-28"
+    },
+    {
+      "id": "DEM-002",
+      "patientNom": "Martin",
+      "patientPrenom": "Marie",
+      "specialite": "Cardiologue",
+      "dateDemandee": "2026-02-20",
+      "heure": "14:30",
+      "statut": "accepte",
+      "motif": "Visite cardiologique",
+      "dateCreation": "2026-01-25",
+      "derniereModification": "2026-01-27"
+    },
+    {
+      "id": "DEM-003",
+      "patientNom": "Bernard",
+      "patientPrenom": "Pierre",
+      "specialite": "Dermatologue",
+      "dateDemandee": "2026-02-10",
+      "heure": "11:00",
+      "statut": "refuse",
+      "motif": "Consultation dermatologie",
+      "dateCreation": "2026-01-20",
+      "derniereModification": "2026-01-26"
+    },
+    {
+      "id": "DEM-004",
+      "patientNom": "Durand",
+      "patientPrenom": "Sophie",
+      "specialite": "Generaliste",
+      "dateDemandee": "2026-03-01",
+      "heure": "10:00",
+      "statut": "en_attente",
+      "motif": "Bilan de santé",
+      "dateCreation": "2026-01-28",
+      "derniereModification": "2026-01-28"
+    },
+    {
+      "id": "DEM-005",
+      "patientNom": "Leclerc",
+      "patientPrenom": "Luc",
+      "specialite": "Cardiologue",
+      "dateDemandee": "2026-02-25",
+      "heure": "15:00",
+      "statut": "accepte",
+      "motif": "Suivi post-opératoire",
+      "dateCreation": "2026-01-22",
+      "derniereModification": "2026-01-27"
+    },
+    {
+      "id": "DEM-006",
+      "patientNom": "Moreau",
+      "patientPrenom": "Anne",
+      "specialite": "Dermatologue",
+      "dateDemandee": "2026-02-18",
+      "heure": "13:30",
+      "statut": "annule",
+      "motif": "Enlèvement tatouage",
+      "dateCreation": "2026-01-15",
+      "derniereModification": "2026-01-25"
+    },
+    {
+      "id": "DEM-007",
+      "patientNom": "Laurent",
+      "patientPrenom": "Claude",
+      "specialite": "Generaliste",
+      "dateDemandee": "2026-03-05",
+      "heure": "08:30",
+      "statut": "en_attente",
+      "motif": "Prescription médicament",
+      "dateCreation": "2026-01-28",
+      "derniereModification": "2026-01-28"
+    },
+    {
+      "id": "DEM-008",
+      "patientNom": "Simon",
+      "patientPrenom": "Isabelle",
+      "specialite": "Cardiologue",
+      "dateDemandee": "2026-02-22",
+      "heure": "16:00",
+      "statut": "accepte",
+      "motif": "Échocardiographie",
+      "dateCreation": "2026-01-24",
+      "derniereModification": "2026-01-28"
+    },
+    {
+      "id": "DEM-009",
+      "patientNom": "Michel",
+      "patientPrenom": "Francoise",
+      "specialite": "Dermatologue",
+      "dateDemandee": "2026-02-28",
+      "heure": "12:00",
+      "statut": "en_attente",
+      "motif": "Traitement acné",
+      "dateCreation": "2026-01-27",
+      "derniereModification": "2026-01-27"
+    },
+    {
+      "id": "DEM-010",
+      "patientNom": "David",
+      "patientPrenom": "Thomas",
+      "specialite": "Generaliste",
+      "dateDemandee": "2026-02-12",
+      "heure": "09:30",
+      "statut": "refuse",
+      "motif": "Certificat médical",
+      "dateCreation": "2026-01-18",
+      "derniereModification": "2026-01-24"
+    },
+    {
+      "id": "DEM-011",
+      "patientNom": "Richard",
+      "patientPrenom": "Michèle",
+      "specialite": "Cardiologue",
+      "dateDemandee": "2026-03-08",
+      "heure": "14:00",
+      "statut": "en_attente",
+      "motif": "Consultation de routine",
+      "dateCreation": "2026-01-28",
+      "derniereModification": "2026-01-28"
+    },
+    {
+      "id": "DEM-012",
+      "patientNom": "Charles",
+      "patientPrenom": "Nathalie",
+      "specialite": "Dermatologue",
+      "dateDemandee": "2026-03-02",
+      "heure": "11:30",
+      "statut": "accepte",
+      "motif": "Contrôle grain de beauté",
+      "dateCreation": "2026-01-26",
+      "derniereModification": "2026-01-28"
+    }
+  ]
+}
