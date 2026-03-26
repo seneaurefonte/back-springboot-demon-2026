@@ -4,7 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import sn.douvewane.apiv1.demande.Demande;
 
 @Entity
 @Data
@@ -23,6 +28,11 @@ public class Patient {
     
     @Column(columnDefinition = "TEXT")
     private String antecedents;
+    
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Demande> demandes = new ArrayList<>();
     
     private LocalDateTime createdAt;
     
