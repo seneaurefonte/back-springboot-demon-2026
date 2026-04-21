@@ -3,6 +3,7 @@ package sn.douvewane.apiv1.patient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import sn.douvewane.apiv1.exception.EntityNotFoundException;
 import sn.douvewane.apiv1.patient.dto.PatientListDTO;
 import sn.douvewane.apiv1.patient.dto.PatientRequestDTO;
 import sn.douvewane.apiv1.patient.dto.PatientResponseDTO;
@@ -55,7 +56,7 @@ public class PatientService {
             patient.setAntecedents(dto.getAntecedents());
             Patient updatedPatient = patientRepository.save(patient);
             return patientMapper.toDto(updatedPatient);
-        }).orElseThrow(() -> new RuntimeException("Patient non trouvé avec l'id " + id));
+        }).orElseThrow(() -> new EntityNotFoundException("Patient non trouvé avec l'id " + id));
     }
 
     public void deletePatient(Long id) {

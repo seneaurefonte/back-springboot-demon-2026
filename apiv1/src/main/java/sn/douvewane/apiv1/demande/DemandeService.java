@@ -6,9 +6,11 @@ import org.springframework.stereotype.Service;
 import sn.douvewane.apiv1.demande.dto.DemandeRequestDTO;
 import sn.douvewane.apiv1.demande.dto.DemandeResponseDTO;
 import sn.douvewane.apiv1.demande.mapper.DemandeMapper;
+import sn.douvewane.apiv1.exception.EntityNotFoundException;
 import sn.douvewane.apiv1.patient.Patient;
 import sn.douvewane.apiv1.patient.PatientRepository;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -31,13 +33,17 @@ public class DemandeService {
         return demandeRepository.findByPatientId(patientId, pageable).map(demandeMapper::toDto);
     }
 
+    public Page<DemandeResponseDTO> getDemandesDuJour(Pageable pageable) {
+        return demandeRepository.findByDateDemandee(LocalDate.now(), pageable).map(demandeMapper::toDto);
+    }
+
     public Optional<DemandeResponseDTO> getDemandeById(Long id) {
         return demandeRepository.findById(id).map(demandeMapper::toDto);
     }
 
     public DemandeResponseDTO createDemande(DemandeRequestDTO dto) {
         Patient patient = patientRepository.findById(dto.getPatientId())
-                .orElseThrow(() -> new RuntimeException("Patient non trouvé avec l'id " + dto.getPatientId()));
+                .orElseThrow(() -> new EntityNotFoundException("Patient non trouvé avec l'id " + dto.getPatientId()));
                 
         Demande demande = demandeMapper.toEntity(dto);
         demande.setPatient(patient);
@@ -58,12 +64,12 @@ public class DemandeService {
             }
             if (!demande.getPatient().getId().equals(dto.getPatientId())) {
                 Patient patient = patientRepository.findById(dto.getPatientId())
-                        .orElseThrow(() -> new RuntimeException("Patient non trouvé avec l'id " + dto.getPatientId()));
+                        .orElseThrow(() -> new EntityNotFoundException("Patient non trouvé avec l'id " + dto.getPatientId()));
                 demande.setPatient(patient);
             }
             Demande updatedDemande = demandeRepository.save(demande);
             return demandeMapper.toDto(updatedDemande);
-        }).orElseThrow(() -> new RuntimeException("Demande non trouvée avec l'id " + id));
+        }).orElseThrow(() -> new EntityNotFoundException("Demande non trouvée avec l'id " + id));
     }
 
     public void deleteDemande(Long id) {
