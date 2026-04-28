@@ -1,28 +1,22 @@
 package sn.douvewane.apiv1.patient;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.EqualsAndHashCode;
-import java.time.LocalDateTime;
+import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
+import sn.douvewane.apiv1.auth.entities.User;
 import sn.douvewane.apiv1.demande.Demande;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Patient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Patient extends User {
     private String numero;
-    private String nom;
-    private String prenom;
     private String telephone;
     private String adresse;
     
@@ -33,13 +27,4 @@ public class Patient {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Demande> demandes = new ArrayList<>();
-    
-    private LocalDateTime createdAt;
-    
-    @PrePersist
-    protected void onCreate() {
-        if(createdAt == null) {
-             createdAt = LocalDateTime.now();
-        }
-    }
 }
